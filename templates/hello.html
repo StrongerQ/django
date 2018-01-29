@@ -1,0 +1,41 @@
+{% load my_tag %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block jicheng %}
+{{ num|filter_add:50 }}
+{% endblock %}
+{% my_add 100 %}
+{{ A }}<HR>
+{{ A|safe }}<HR>
+{{ A|striptags }}<HR>
+{% autoescape off%}
+    {{ A }}<HR>
+{% endautoescape %}
+{{ times|date:'Y-m-d' }}<HR>
+{{ Kname|default:'KONGDE' }}<hr>
+{{ name|upper }}<hr>
+{{ username }}
+{% verbatim %}
+    {{ username }}
+{% endverbatim %}
+{#{{ list.0 }}#}
+{{ list.name.3 }}
+{% with iss=username %}
+    {{ iss }}
+{% endwith %}
+{{ list.name.3|add:10 }}
+{% for i in list.name %}
+    <p>{{ forloop.counter }}:{{ i }}</p>
+{% endfor %}
+<form method="post" action={% url 'woqu' 'world' 'name'  %}>
+    <input type="text" name="user">
+    <input type="submit" value="提交">
+    {% csrf_token %}
+</form>
+</body>
+</html>
