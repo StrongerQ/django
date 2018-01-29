@@ -8,6 +8,8 @@ class Book(models.Model):
     author = models.ManyToManyField("Author")
     publish = models.ForeignKey("Publish",on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
     class Meta: #设置表方法的源类
         unique_together = (('name','price'),) #联合唯一
 
