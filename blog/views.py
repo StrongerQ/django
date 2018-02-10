@@ -13,6 +13,7 @@ def login(rq,world,name):
     if  rq.method=='POST':
         username = rq.POST.get('user')
         if rq.POST.get('user')=='rq':
+            rq.session['is_login']=True
             return redirect("http://www.baidu.com")
     # return render(rq,"hello.html",{"name":world,'user':username})
     # list = [1,2,3,4]
@@ -44,3 +45,22 @@ def cha(rq):
     print(fuzu)
 
     return  HttpResponse('OK')
+
+def index(rq):
+
+
+    return render(rq,"index.html")
+
+
+def ajax(rq):
+
+    return HttpResponse("HELLO")
+
+
+from django import views
+
+class login(views.View):
+    def get(self):
+        return HttpResponse('OK')
+    def post(self,rq):
+        pass

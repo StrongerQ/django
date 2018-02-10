@@ -19,6 +19,9 @@ from django.conf.urls import url
 from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', views.index),
+    path('ajax/', views.ajax),
+    path('login/', views.login.as_view()),
     path('blog/', include('blog.urls')),
     # path('index/<str:names>/', views.login),
     # path('index/<names>/', views.login),
